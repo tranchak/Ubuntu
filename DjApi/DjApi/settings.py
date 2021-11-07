@@ -86,9 +86,9 @@ WSGI_APPLICATION = 'DjApi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Oleg',
-        'USER': 'Oleg',
-        'PASSWORD': '1988',
+        'NAME': 'tdv',
+        'USER': 'tdv',
+        'PASSWORD': '123',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
