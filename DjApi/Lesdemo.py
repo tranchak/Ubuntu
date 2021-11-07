@@ -4,14 +4,10 @@ conn = psycopg2.connect(dbname='Oleg', user='Oleg', password='1988', host='local
 
 cursor = conn.cursor()  # создаем обьект курсора
 
-sql = '''CREATE TABLE less2
+sql = '''CREATE TABLE dz
 (
-    Id SERIAL PRIMARY KEY,
-    FirstName CHARACTER VARYING(20),
-    LastName CHARACTER VARYING(20),
-    Email CHARACTER VARYING(30) UNIQUE,
-    Phone CHARACTER VARYING(30) UNIQUE,
-    Age INTEGER
+    Id PRIMARY KEY,
+
 
     );'''
 
