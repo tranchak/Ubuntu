@@ -1,17 +1,16 @@
 import psycopg2
 
-conn = psycopg2.connect(dbname='Oleg', user='Oleg', password='1988', host='localhost')
+conn = psycopg2.connect(dbname='tdv', user='tdv', password='123', host='localhost')
 
 cursor = conn.cursor() # создаем обьект курсора
 
-sql = '''CREATE TABLE Che
-(
-    LastName CHARACTER VARYING(20),
-    Age INTEGER CHECK (Age >18),
-    Email CHARACTER VARYING(30) UNIQUE CHECK(Email !='')
-    
-   );'''
-
-cursor.execute(sql)  # вставляем SQl код
+# sql = '''SELECT * FROM main_auto WHERE brand_id in (SELECT ID FROM main_brand WHERE name in ('Лада'));
+# '''
+# sql2 = '''SELECT * FROM main_auto WHERE brand_id in (SELECT ID FROM main_brand WHERE name ='Лада' or name='БМВ');
+# '''
+sql3 = '''SELECT * FROM main_auto WHERE brand_id in (SELECT ID FROM main_brand WHERE name NOT IN ('Лада'));
+'''
+cursor.execute(sql3)  # вставляем SQl код
+print(cursor.fetchall())
 conn.commit()  # делаем commit
 conn.close()
