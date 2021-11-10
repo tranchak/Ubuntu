@@ -16,7 +16,7 @@ class Auto(models.Model):
 
 
 class Brand(models.Model):
-    name = models.CharField(max_length=250, verbose_name='Модель авто')
+    name = models.CharField(max_length=250, verbose_name='Брэнд авто')
 
     def __str__(self):
         return self.name
