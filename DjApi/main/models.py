@@ -2,13 +2,17 @@ from django.db import models
 
 
 class Auto(models.Model):
-    name = models.CharField(max_length=50, verbose_name='Марка авто')
-    price = models.DecimalField(decimal_places=2, max_digits=6, verbose_name='Цена авто', null=True, blank=True)
-    brand = models.ForeignKey('Brand', on_delete=models.CASCADE, verbose_name='Модель авто')
-    details = models.ManyToManyField('Detail', verbose_name='Запчасти авто')
+    name = models.CharField(max_length=50,
+                            verbose_name='Марка авто')
+    price = models.DecimalField(decimal_places=2, max_digits=6,
+                                verbose_name='Цена авто', null=True, blank=True)
+    brand = models.ForeignKey('Brand', on_delete=models.CASCADE,
+                              verbose_name='Модель авто')
+    details = models.ManyToManyField('Detail',
+                                     verbose_name='Запчасти авто')
 
-    def __str__(self):
-        return self.name
+    # def __str__(self):
+    #     return self.name
 
     class Meta:
         verbose_name = 'Автомобиль'
