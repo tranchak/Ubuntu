@@ -11,8 +11,8 @@ class Auto(models.Model):
     details = models.ManyToManyField('Detail',
                                      verbose_name='Запчасти авто')
 
-    # def __str__(self):
-    #     return self.name
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = 'Автомобиль'

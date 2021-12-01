@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Книги и магазины из книг. Магазины вторичная для книг.
+{% for book in books %}
+<p>{{book}} -
+    {% for sto in book.store_set.all %}
+        {{sto.name}}
+    {% endfor %}
+{% endfor %}
+</p>
+Книги и авторы из книг (книги - вторичная для авторов  - форен кей)
+{% for book in books %}
+<p>{{book}} -
+    {% for author in book.authors.all %}
+        {{author}}</p>
+    {% endfor %}
+{% endfor %}
+
+
+</body>
+</html>
