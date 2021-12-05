@@ -4,8 +4,9 @@ from django.shortcuts import render
 # Create your views here.
 # from django.views import View
 from django.views import View
-from django.views.generic import ListView
+from django.views.generic import ListView, FormView
 
+from .forms import CarForm
 from .models import Book, Author, Store, Publisher
 
 
@@ -78,5 +79,9 @@ class NewView(View):
     def put(self,request):
         return HttpResponse('Hello, I am PUT')
 
-class MyView2(FormView):
+class MyNewView(FormView):
+    form_class = CarForm
+    template_name = 'library/index.html'
+    success_url = '/admin/'
+
 

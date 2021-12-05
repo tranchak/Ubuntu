@@ -1,12 +1,13 @@
 
 from django.urls import path
 # from django.views.generic import TemplateView
-from .views import MyView, NewView
+from .views import MyView, NewView, MyNewView
 
 app_name='library'
 urlpatterns = [
 
     # path("api/", MyView.as_view(), name="classView")
     path("api/", MyView.as_view(), name="classView"),
-    path("new/", NewView.as_view(), name="new")
+    path("new/", NewView.as_view(), name="new"),
+    path("index/", MyNewView.as_view(), name="index")
 ]
