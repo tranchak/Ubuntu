@@ -10,14 +10,17 @@
     {% for field in form %}
     <div>
         <p>
-            {{ field.help_text }}
+
             {{ field.label }}
-            {{ field }}
-            <span style="color:red;">{{ field.errors.as_text }}</span>
+            <span data-toggle="tooltip" data-placement="right" title="{{field.help_text}}">{{ field }}</span>
+            <span style="color:red">{{ field.errors.as_text }}</span>
         </p>
         {% endfor %}
     </div>
     <input type="submit" value="OK">
 </form>
+
+
+
 </body>
 </html>

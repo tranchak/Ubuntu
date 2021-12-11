@@ -36,5 +36,6 @@ def user_cap(name):
 class FormUserView(forms.Form):
     username=forms.CharField(label='User Name',validators=[user_cap],
                              help_text='Верхний регистр и больше 5 символов')
-    email=forms.EmailField(label='User email')
+    email=forms.EmailField(label='User email',
+                           help_text='Не занимайся Дима Херней')
     note=forms.CharField(label='Note')
