@@ -4,9 +4,9 @@ from django.shortcuts import render
 # Create your views here.
 # from django.views import View
 from django.views import View
-from django.views.generic import ListView, FormView
+from django.views.generic import ListView, FormView, CreateView
 
-from .forms import CarForm
+from .forms import CarForm, GetPost, FormUserView
 from .models import Book, Author, Store, Publisher
 
 
@@ -71,17 +71,49 @@ class MyView(ListView):
     model = Book
     template_name = 'library/api.html'
 
+
 class NewView(View):
     def get(self, request):
-        return render(request,template_name='library/new.html')
-    def post(self,request):
+        return render(request, template_name='library/new.html')
+
+    def post(self, request):
         return HttpResponse('Привет метод POST')
-    def put(self,request):
+
+    def put(self, request):
         return HttpResponse('Hello, I am PUT')
 
-class MyNewView(FormView):
+
+class MyNewView(CreateView):
     form_class = CarForm
     template_name = 'library/index.html'
     success_url = '/admin/'
 
+    # def form_valid(self, form):
+    #     self.object
 
+
+# def get_post_data_form(request):
+#     form=GetPost()
+#     if request.method=='POST':
+#         # form.save()
+#         form=GetPost(request.POST)
+#         print(form)
+#     contex={"form":form}
+#     return render (request, 'getPost.html',contex)
+
+def form_user_view(request):
+    if request.method == 'POST':
+        form = FormUserView(request.POST)
+        if form.is_valid():
+
+            return render(request, template_name='library/form.html', context={'form': form})
+        else:
+            err = form.errors
+            return render(request, template_name='library/form.html', context={'form': form})
+    else:
+        form = FormUserView()
+        return render(request, template_name='library/form.html', context={'form': form})
+
+# def form_user_view(request):
+#     form = FormUserView()
+#     return render(request, template_name='library/form.html', context={'form': form})

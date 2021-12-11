@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+</head>
+<body>
+<form action="" method = 'POST'>
+    {% csrf_token %}
+    {% for field in form %}
+    <div>
+        <p>
+            {{ field.help_text }}
+            {{ field.label }}
+            {{ field }}
+            <span style="color:red;">{{ field.errors.as_text }}</span>
+        </p>
+        {% endfor %}
+    </div>
+    <input type="submit" value="OK">
+</form>
+</body>
+</html>
