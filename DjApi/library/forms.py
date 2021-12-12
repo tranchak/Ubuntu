@@ -30,12 +30,22 @@ def user_cap(name):
         return name
 
 
-
-
-
 class FormUserView(forms.Form):
     username=forms.CharField(label='User Name',validators=[user_cap],
                              help_text='Верхний регистр и больше 5 символов')
     email=forms.EmailField(label='User email',
-                           help_text='Не занимайся Дима Херней')
+                           help_text='Правильно введите ваш email')
     note=forms.CharField(label='Note')
+
+def validator_stas(value):
+    if value <0 :
+        raise ValidationError('Value should be a positive number')
+
+
+
+class StasCarForm(forms.ModelForm):
+    price=forms.DecimalField(validators=[validator_stas])
+
+    class Meta:
+        model=Car
+        fields='__all__'

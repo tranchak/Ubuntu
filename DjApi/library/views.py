@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.views import View
 from django.views.generic import ListView, FormView, CreateView
 
-from .forms import CarForm, GetPost, FormUserView
+from .forms import CarForm, GetPost, FormUserView, StasCarForm
 from .models import Book, Author, Store, Publisher
 
 
@@ -117,3 +117,12 @@ def form_user_view(request):
 # def form_user_view(request):
 #     form = FormUserView()
 #     return render(request, template_name='library/form.html', context={'form': form})
+
+def get_stas(request):
+    form=StasCarForm()
+    if request.method =='POST':
+        form=StasCarForm(request.POST)
+        if form.is_valid():
+            form.save()
+    context = {'form': form}
+    return render(request, 'library/get_stas.html', context)
