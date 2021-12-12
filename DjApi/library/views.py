@@ -7,7 +7,7 @@ from django.views import View
 from django.views.generic import ListView, FormView, CreateView
 
 from .forms import CarForm, GetPost, FormUserView, StasCarForm
-from .models import Book, Author, Store, Publisher
+from .models import Book, Author, Store, Publisher, Car
 
 
 # # def get_main(request):
@@ -117,9 +117,9 @@ def form_user_view(request):
 
 
 def get_stas(request):
-    form=StasCarForm()
+    form=StasCarForm(initial={"brand":"Porche","model":"Caen","price":1000})
     if request.method =='POST':
-        form=StasCarForm(request.POST)
+        form=StasCarForm(request.POST,instance=Car.objects.get(pk=1))
         if form.is_valid():
             form.save()
     context = {'form': form}

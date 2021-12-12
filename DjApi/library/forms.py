@@ -49,3 +49,14 @@ class StasCarForm(forms.ModelForm):
     class Meta:
         model=Car
         fields='__all__'
+
+
+    def clean_brand(self):
+        data=self.cleaned_data.get('brand')
+        if Car.objects.filter(brand=data):
+            raise ValidationError('Такой брэнд есть выбери другой')
+        if data.islower():
+            raise ValidationError('Все должно быть большим')
+        return data
+    # def clean(self):
+    #     cleaned_data=super(StasCarForm,self).clean()
