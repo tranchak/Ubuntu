@@ -114,9 +114,7 @@ def form_user_view(request):
         form = FormUserView()
         return render(request, template_name='library/form.html', context={'form': form})
 
-# def form_user_view(request):
-#     form = FormUserView()
-#     return render(request, template_name='library/form.html', context={'form': form})
+
 
 def get_stas(request):
     form=StasCarForm()
