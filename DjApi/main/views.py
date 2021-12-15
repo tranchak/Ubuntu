@@ -1,7 +1,12 @@
+from django.core.signals import request_started
 from django.db.models import Count, F, Sum, Avg
 from django.shortcuts import render
 from .models import Auto, Brand, Detail
 
+def fn1(sender, **kwargs):
+    print('Я исполнилась main')
+
+request_started.connect(fn1, dispatch_uid='fn1')
 
 def home_page(request):
     a=Auto.objects.aggregate()

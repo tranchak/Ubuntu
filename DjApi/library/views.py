@@ -1,3 +1,4 @@
+from django.dispatch import receiver
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -8,6 +9,16 @@ from django.views.generic import ListView, FormView, CreateView
 
 from .forms import CarForm, GetPost, FormUserView, StasCarForm
 from .models import Book, Author, Store, Publisher, Car
+from DjApi.signals import *
+from django.core.signals import request_finished, request_started
+
+
+# @receiver(request_started)
+def fn(sender, **kwargs):
+    print('Я исполнилась')
+
+request_started.connect(fn, dispatch_uid='fn1')
+
 
 
 # # def get_main(request):
