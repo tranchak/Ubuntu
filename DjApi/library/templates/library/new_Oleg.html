@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+</head>
+<body>
+<form action=""method="POST">
+{% csrf_token %}
+<input type="text" name="Login">
+<select name="choice" id="1"multiple>
+    <option value="1">Stas</option>
+    <option value="2">Bob</option>
+    <option value="3">Misha</option>
+</select>
+<button>OK</button>
+</form>
+</body>
+</html>

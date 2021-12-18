@@ -85,7 +85,7 @@ class MyView(ListView):
 
 class NewView(View):
     def get(self, request):
-        return render(request, template_name='library/new.html')
+        return render(request, template_name='library/index.html')
 
     def post(self, request):
         return HttpResponse('Привет метод POST')
@@ -135,3 +135,7 @@ def get_stas(request):
             form.save()
     context = {'form': form}
     return render(request, 'library/get_stas.html', context)
+
+def Johan(request):
+    print(request.POST.getlist('choice'))
+    return render(request, 'library/new_Oleg.html')

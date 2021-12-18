@@ -8,6 +8,7 @@ cycler==0.11.0
 distlib==0.3.4
 Django==3.2.8
 django-debug-toolbar==3.2.2
+djangorestframework==3.13.1
 filelock==3.4.0
 fonttools==4.28.3
 idna==3.3
@@ -41,6 +42,7 @@ sklearn==0.0
 soupsieve==2.3.1
 sqlparse==0.4.2
 threadpoolctl==3.0.0
+tk==0.1.0
 typing==3.7.4.3
 urllib3==1.26.7
 virtualenv==20.10.0
